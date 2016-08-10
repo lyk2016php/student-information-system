@@ -63,4 +63,19 @@ $students = array(
 			array("name" => "Çiçekten Boya Yapımı", "grade" => "AA"),
 			),
 		),
+	"130122038" => array(
+		"student_id" => 130122038,
+		"name" => array("first_name" => "Merve Rana", "last_name" => "SARI"),
+		"birth_year" => 1995,
+		"registered_at" => 2013,
+		"is_graduated" => "hayır",
+		"graduated_at" => null,
+		"term" => 7,
+		"department" => "BÖTE",
+		"lectures" => array(
+			array("name" => "İnternet Tabanlı Programlama", "grade" => "FF"),
+			array("name" => "Ağ Dersi", "grade" => "CB"),
+			array("name" => "İşletim Sistemleri", "grade" => "DD"),
+			),
+		),
 	);
