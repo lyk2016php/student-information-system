@@ -24,6 +24,9 @@ require_once "students.php";
 // girildiyse, girilen bu numara öğrenci listesinde var mı diye bak
 // bu numara öğrenci listesinde yoksa, böyle bir öğrenci yok diyerek çalışmayı durdur
 // detayı bulunan öğrencinin bilgilerini ekrana bas
+
+// kimi işlemler için yardımcı fonksiyonlar kullanabiliriz, bunları "functions.php" isimli başka bir dosyada tanımlıyoruz, bu dosyada da kullanmak için içeri çağırıyoruz
+require_once "functions.php";
 ?>
 <!DOCTYPE html>
 <html lang="tr">
@@ -44,7 +47,9 @@ require_once "students.php";
 		<div class="col-md-6">
 			<h1>Öğrenci Listesi</h1>
 			<div class="list-group">
-				<?php foreach($students as $student): ?>
+				<?php foreach($students as $student): 
+					if( in_array($student['student_id'], $bannedStudentIds) ) continue;
+				?>
 					<a href="?student_id=<?=$student["student_id"]?>" class="list-group-item <? if($student["student_id"]==$_GET["student_id"]) echo "active" ?>">
 						<?=$student["name"]["first_name"]?> <?=$student["name"]["last_name"]?>
 					</a>
@@ -82,19 +87,11 @@ require_once "students.php";
 			</tr>
 			<tr>
 				<th>Mezun mu?</th>
-				<td>
-					<?php if($ogrenci['is_graduated']===true): ?>
-						Mezun
-					<?php elseif($ogrenci['is_graduated']===false): ?>
-						Mezun Değil
-					<?php else: ?>
-						<em>Yanlış Formatta Bilgi Girilmiş</em>
-					<?php endif; ?>
-				</td>
+				<td><?=isGraduatedToText($ogrenci['is_graduated'])?></td>
 			</tr>
 			<tr>
 				<th>Çıkış Yılı</th>
-				<td><?=$ogrenci["graduated_at"]?></td>
+				<td><?=graduatedAtToText($ogrenci["graduated_at"])?></td>
 			</tr>
 			<tr>
 				<th>Dönem</th>

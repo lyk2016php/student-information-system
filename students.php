@@ -54,7 +54,7 @@ $students = array(
 		"birth_year" => 1991,
 		"registered_at" => 2010,
 		"is_graduated" => true,
-		"graduated_at" => 2015,
+		"graduated_at" => "2015",
 		"term" => null,
 		"department" => "Biyoloji",
 		"lectures" => array(
@@ -79,3 +79,5 @@ $students = array(
 			),
 		),
 	);
+
+$bannedStudentIds = [110101010];
